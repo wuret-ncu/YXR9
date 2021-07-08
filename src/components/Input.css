@@ -1,0 +1,29 @@
+.input{
+    margin-left: 10px;
+    border-radius: 2%;
+}
+.inputTitle{
+    display: flex;
+    justify-content: space-between;
+    padding:20px;
+}
+.inputTitle span{
+    font-size: 40px;
+}
+.inputTitle button{
+    font-size: 20px;
+}
+.inputData{
+    margin-left: 1px;
+    font-size: 30px;
+}
+.inputData input{
+    font-size: 30px;
+}
+.sumbit{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 20px 0px;
+    font-size: 30px;
+}
