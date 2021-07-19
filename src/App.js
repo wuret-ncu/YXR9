@@ -11,7 +11,6 @@ class App extends React.Component {
     this.state = {
       item: [{id:1,title:"讀書",completed:false},{id:2,title:"寫作業",completed:false},{id:3,title:"畫畫",completed:false}],
       input: '',
-      completed: false,
     };
     this.addList = this.addList.bind(this);
   }
@@ -87,9 +86,6 @@ class App extends React.Component {
         <Nav name= {this.state.item}/>
         <Input
           item= {this.state.item}
-          value= {this.state.input} 
-          id= {this.state.id}
-          completed= {this.state.completed}
           handleOnChange= {this.toggleCompleted}
           handleOnRemove= {this.removeList}
         />
