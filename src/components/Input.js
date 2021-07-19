@@ -9,7 +9,7 @@ function Input(props){
             <div key={todo.id} className="inputData">
                 <div>
                     <label>
-                        <input type="checkbox" onChange={(e)=>props.handleOnChange(e,id)}/>
+                        <input type="checkbox" onChange={(e)=>props.handleOnChange(id)}/>
                     </label>
                     <a className="inputdata">{todo.title}</a>
                     <button className="btn">Edit</button>

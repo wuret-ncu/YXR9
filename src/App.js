@@ -28,12 +28,14 @@ class App extends React.Component {
 
   /* 按下Add按鈕，新增清單項目 */
   addList=(a)=>{
+    let itemLength = this.state.item.length;
+
     if(this.state.input===""){
       return;
     }
     this.setState({
       item:[...this.state.item,{
-        id:nanoid(),
+        id:(itemLength += 1),
         title:this.state.input,
         completed:false,
       },],
@@ -52,14 +54,18 @@ class App extends React.Component {
   };
 
   /**當勾選清單項目時的事件 */
-  toggleCompleted=(e,id)=>{
-    const listCompleted=this.state.item.map((todo)=>{
-      if(todo.id===id+1){
-        todo.completed=e.target.checked;
-      }
-      return todo;
+  toggleCompleted=index=>{
+    const {item}=this.state;
+    this.setState({
+      item: item.map(todo=>{
+        if(todo.id === index+1)
+        return{
+          ...todo,
+          completed: !todo.completed
+        };
+        return todo;
+      })
     });
-    this.setState({ item:listCompleted });
   };
 
   //lifecycle
