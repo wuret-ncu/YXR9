@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      item:['讀書','寫作業','畫畫'],
+      item:[{id:1,title:"讀書",completed:false},{id:2,title:"寫作業",completed:false},{id:3,title:"畫畫",completed:false}],
       input:'',
       completed:false,
       id:nanoid(),
@@ -22,47 +22,45 @@ class App extends React.Component {
     if(e.target instanceof HTMLInputElement){
       this.setState({
         input:e.target.value,
-        completed:false,
-        id:nanoid(),
       })
     }
   }
 
   /* 按下Add按鈕，新增清單項目 */
   addList=(a)=>{
-    const otheritem=[a.target.value,...this.state.item]
+    if(this.state.input===""){
+      return;
+    }
     this.setState({
-      id:nanoid(),
-      item:otheritem,
+      item:[...this.state.item,{
+        id:nanoid(),
+        title:this.state.input,
+        completed:false,
+      },],
       input:'',
-      completed:false,
-    })
+    });
     // console.log('ok~');
-  }
+  };
 
   /**按下清單項目的Delete按鈕，刪除清單項目 */
   removeList=(index)=>{
     const {item}=this.state;
-    item.splice(index,1);
+    item.splice(index,1);   //從該索引值位置刪除一個項目
     this.setState({
       item,
     });
   };
 
   /**當勾選清單項目時的事件 */
-  toggleCompleted=(event,index)=>{
-    const listCompleted=this.state.item.filter((todo)=>{
-      if(todo.id===index+1){
-        todo.completed=event.target.checked;
+  toggleCompleted=(e,id)=>{
+    const listCompleted=this.state.item.map((todo)=>{
+      if(todo.id===id+1){
+        todo.completed=e.target.checked;
       }
       return todo;
     });
-    this.setState({
-      item: listCompleted,
-      completed:true,
-      id:nanoid(),
-    });
-  }
+    this.setState({ item:listCompleted });
+  };
 
   //lifecycle
   componentDidUpdate() {
