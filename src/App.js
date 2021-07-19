@@ -75,23 +75,23 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <h1 className = "title">To Do List</h1>
+        <h1 className= "title">To Do List</h1>
         <input 
-          className = "input"
-          type = "text" 
-          placeholder = "Type item here..." 
-          onKeyPress = {this.addList} 
-          onChange = {this.insertList}
+          className= "input"
+          type= "text" 
+          placeholder= "Type item here..." 
+          onKeyPress= {this.addList} 
+          onChange= {this.insertList}
         />
-        <button className = "btn" onClick = {this.addList} value = {this.state.input}>Add</button>
-        <Nav name = {this.state.item}/>
+        <button className= "btn" onClick= {this.addList} value= {this.state.input}>Add</button>
+        <Nav name= {this.state.item}/>
         <Input
-          item = {this.state.item}
-          value = {this.state.input} 
-          id = {this.state.id}
-          completed = {this.state.completed}
-          handleOnChange = {this.toggleCompleted}
-          handleOnRemove = {this.removeList}
+          item= {this.state.item}
+          value= {this.state.input} 
+          id= {this.state.id}
+          completed= {this.state.completed}
+          handleOnChange= {this.toggleCompleted}
+          handleOnRemove= {this.removeList}
         />
       </div>
     );
