@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      item: [{id:1,title:"讀書",completed:false},{id:2,title:"寫作業",completed:false},{id:3,title:"畫畫",completed:false}],
+      item: [{id: 1, title: "讀書", completed: false}, {id: 2,title: "寫作業", completed: false}, {id: 3, title: "畫畫", completed: false}],
       input: '',
     };
     this.addList = this.addList.bind(this);
@@ -26,14 +26,15 @@ class App extends React.Component {
 
   /* 按下Add按鈕，新增清單項目 */
   addList = (a) => {
-    let itemLength = this.state.item.length;
+    // let itemLength = this.state.item.length;
 
     if(this.state.input === ""){
       return;
     }
     this.setState({
       item: [...this.state.item,{
-        id: (itemLength += 1),
+        // id: (itemLength += 1),
+        id: nanoid(),
         title: this.state.input,
         completed: false,
       },],
@@ -52,19 +53,28 @@ class App extends React.Component {
   };
 
   /**當勾選清單項目時的事件 */
-  toggleCompleted = (index) => {
-    const {item} = this.state;
-    this.setState({
-      item: item.map(todo=>{
-        if(todo.id === index+1)
-        return{
-          ...todo,
-          completed: !todo.completed
-        };
-        return todo;
-      })
+  // toggleCompleted = (id) => {
+  //   const {item} = this.state;
+  //   this.setState({
+  //     item: item.map(todo=>{
+  //       if(todo.id === id+1)
+  //       return{
+  //         ...todo,
+  //         completed: !todo.completed
+  //       };
+  //       return todo;
+  //     })
+  //   });
+  // };
+  toggleCompleted = (id) => {
+    const changeState = this.state.item.map((todo) => {
+      if(todo.id === id){
+        return{...todo, completed: !todo.completed}
+      }
+      return todo;
     });
-  };
+    this.setState({ item: changeState });
+  }
 
   //lifecycle
   componentDidUpdate() {

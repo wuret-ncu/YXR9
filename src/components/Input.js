@@ -4,12 +4,12 @@ import './Input.css';
 function Input(props){
     const {item} = props;
     
-    const listItem = item.map((todo,index) => {
+    const listItem = item.map((todo,id,index) => {
         return(
             <div key = {todo.id} className = "inputData">
                 <div>
                     <label>
-                        <input type = "checkbox" onChange = {(e)=>props.handleOnChange(index)}/>
+                        <input type = "checkbox" onChange = {(e)=>props.handleOnChange(id)}/>
                     </label>
                     <a className = "inputdata">{todo.title}</a>
                     <button className = "btn">Edit</button>
