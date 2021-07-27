@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Input.css';
 
-function Data(props) {
-    return(
-        <div className="inputData">
-            <input type="checkbox" />
-            <a>{props.name}</a>
-            <button>Edit</button>
-            <button>Delete</button>
-        </div>
-    )
-    
-}
-
 function Input(props){
-    const list=props.name.map(value=>
-        <Data key={value} name={value}/>)
-        console.log(list);
+    const {item} = props;
+    
+    const listItem = item.map((todo,id,index) => {
+        return(
+            <div key = {todo.id} className = "inputData">
+                <div>
+                    <label>
+                        <input type = "checkbox" onChange = {(e)=>props.handleOnChange(id)}/>
+                    </label>
+                    <a className = "inputdata">{todo.title}</a>
+                    <button className = "btn">Edit</button>
+                    <button className = "btn" onClick={()=>props.handleOnRemove(index)}>Delete</button>
+                </div>
+            </div>
+        )
+    });
+    console.log(listItem);
     return(
-        <div className="input">
-            <ul>{list}</ul>
+        <div className="inputlist">
+            <ul>{listItem}</ul>
         </div>
     )
 }
