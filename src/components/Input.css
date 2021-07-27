@@ -1,29 +1,53 @@
-.input{
-    margin-left: 10px;
+.input {
+    margin-right: 10px;
     border-radius: 2%;
+    border: 1px burlywood solid;
+    text-align: center;
+    height: 30px;
+    color: saddlebrown;
 }
-.inputTitle{
+
+.input:focus {
+    border: 3px palegoldenrod solid;
+    box-shadow: 2px 2px 2px brown;
+}
+
+.inputlist {
+    clear: both;
+    margin: 5% auto;
+    padding: 50px;
+    border-radius: 2%;
+    border: 1px burlywood solid;
+    width: 350px;
+    text-align: left;
+}
+
+.inputTitle {
     display: flex;
     justify-content: space-between;
     padding:20px;
 }
-.inputTitle span{
+
+.inputTitle span {
     font-size: 40px;
 }
-.inputTitle button{
+
+.inputTitle button {
     font-size: 20px;
 }
-.inputData{
-    margin-left: 1px;
-    font-size: 30px;
+
+.inputdata {
+    display: inline;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    vertical-align: middle;
+    color: brown;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 50px;
 }
-.inputData input{
-    font-size: 30px;
-}
-.sumbit{
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
-    margin: 20px 0px;
+
+.inputData input {
     font-size: 30px;
 }
